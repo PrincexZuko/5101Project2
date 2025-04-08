@@ -9,14 +9,20 @@ namespace _5101Project2
 {
     public class JsonFile
     {
+    /*
+     * Method name: ParseJson()
+     * Purpose: Read and deserialize the JSON file into a generic list of InfixExpression objects.
+     * Accepts: string (filePath)
+     * Returns: List<InfixExpression>
+     * Coder: KG
+     * Date: April 8, 2025
+     */
         public static List<InfixExpression> ParseJson(string filePath)
         {
-            // Check if the file exists
             if (!File.Exists(filePath))
             {
                 throw new FileNotFoundException($"File not found: {filePath}");
             }
-            // Read all text from the file
             string jsonContent = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<InfixExpression>>(jsonContent);
         }
