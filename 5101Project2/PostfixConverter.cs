@@ -6,65 +6,63 @@ using System.Threading.Tasks;
 
 namespace _5101Project2
 {
-    namespace _5101Project2
+    /**
+        * Class Name: PostfixConverter
+        * Purpose: Convert infix expressions into postfix notation
+        * Methods: ConvertToPostfix(string)
+        *          Precedence(char)
+        * Coder: KG
+        * Date: April 8, 2025
+        * Updated By: KL
+        * Changes: Updated ConvertToPostfix for performance and clarity 
+        *          using StringBuilder and append instead of string concatenation
+        */
+    public class PostfixConverter
     {
-        /**
-         * Class Name: PostfixConverter
-         * Purpose: Convert infix expressions into postfix notation
-         * Methods: ConvertToPostfix()
-         * Coder: KG
-         * Date: April 8, 2025
-         */
-        public class PostfixConverter
+        public static string ConvertToPostfix(string infix)
         {
-            public static string ConvertToPostfix(string infix)
+            Stack<char> st = new Stack<char>();
+            StringBuilder result = new StringBuilder(); 
+
+            foreach (char token in infix)
             {
-                Stack<char> st = new Stack<char>();
-                string result = ""; 
-
-                foreach (char c in infix)
+                if (char.IsLetterOrDigit(token))
+                    result.Append(token);
+                else if (token == '(')
+                    st.Push(token);
+                else if (token == ')')
                 {
-                    if (char.IsLetterOrDigit(c))
-                    { result += c;
-                    } else if (c == '(')
-                    { st.Push(c);
-                    } else if (c == ')')
-                    {
-                        while (st.Count > 0 && st.Peek() != '(')
-                        {
-                            result += st.Pop();
-                        }
-                        st.Pop();
-                        
-                    // If an operator is scanned
-                    } else
-                    {
-                        while (st.Count > 0 && Precedence(c) <= Precedence(st.Peek()))
-                        {
-                            result += st.Pop();
-                        }
-                        st.Push(c); 
-                    }
-                }
+                    while (st.Count > 0 && st.Peek() != '(')
+                        result.Append(st.Pop());
 
-                while (st.Count > 0)
+                    if(st.Count > 0)
+                        st.Pop(); // Remove '('
+                }
+                else // If an operator is scanned
                 {
-                    result += st.Pop();
-                }
+                    while (st.Count > 0 && Precedence(token) <= Precedence(st.Peek()))
+                        result.Append(st.Pop());
 
-                return result;
+                    st.Push(token); 
+                }
             }
 
-            private static int Precedence(char op)
+            while (st.Count > 0)
+                result.Append(st.Pop());
+
+            //convert StringBuilder object to string and return
+            return result.ToString();
+        }
+
+        private static int Precedence(char op)
+        {
+            return op switch
             {
-                return op switch
-                {
-                    '^' => 3,
-                    '*' or '/' => 2,
-                    '+' or '-' => 1,
-                    _ => -1, 
-                };
-            }
+                '^' => 3,
+                '*' or '/' => 2,
+                '+' or '-' => 1,
+                _ => -1, 
+            };
         }
     }
 }

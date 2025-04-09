@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace _5101Project2
 {
@@ -16,6 +17,8 @@ namespace _5101Project2
      * Returns: List<InfixExpression>
      * Coder: KG
      * Date: April 8, 2025
+     * Updated By: KL
+     * Changes: added aditional error checking and refined variables for clarity
      */
         public static List<InfixExpression> ParseJson(string filePath)
         {
@@ -23,15 +26,17 @@ namespace _5101Project2
             {
                 throw new FileNotFoundException($"File not found: {filePath}");
             }
+            // Read the file and deserialize it into a List of InfixExpression objects
             string jsonContent = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<List<InfixExpression>>(jsonContent);
-        }
-    }
+            var expressions = JsonConvert.DeserializeObject<List<InfixExpression>>(jsonContent);
 
-    // class structure for JSON data
-    public class InfixExpression
-    {
-        public int Sno { get; set; } 
-        public string Infix { get; set; } 
+            // Error Checking
+            if (expressions == null)
+            {
+                throw new InvalidDataException("Failed to deserialize JSON content.");
+            }
+
+            return expressions;
+        }
     }
 }
