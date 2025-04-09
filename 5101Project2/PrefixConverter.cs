@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _5101Project2
+﻿namespace _5101Project2
 {
-    /**
+    /*
      * Class Name: PrefixConverter
      * Purpose: Convert infix expressions into prefix notation
      * Methods: ConvertToPrefix()
@@ -17,6 +11,14 @@ namespace _5101Project2
      */
     public class PrefixConverter
     {
+        /*
+         * Method name: ConvertToPrefix()
+         * Purpose: Convert a given infix expression into prefix notation.
+         * Accepts: string (infix) - The infix expression to be converted.
+         * Returns: string - The converted prefix expression.
+         * Coder: KG
+         * Date: April 8, 2025
+         */
         public static string ConvertToPrefix(string infix)
         {
             char[] arr = infix.ToCharArray();
@@ -26,13 +28,9 @@ namespace _5101Project2
             for (int i = 0; i < arr.Length; i++)
             {
                 if (arr[i] == '(')
-                {
                     arr[i] = ')';
-                }
                 else if (arr[i] == ')')
-                {
                     arr[i] = '(';
-                }
             }
             // Convert reversed infix to postfix
             string postfix = PostfixConverter.ConvertToPostfix(new string(arr));

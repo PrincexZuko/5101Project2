@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _5101Project2
 {
-    internal class CompareExpressions
+    public class CompareExpressions
     {
     }
 }

@@ -8,33 +8,37 @@ using System.Linq.Expressions;
 
 namespace _5101Project2
 {
+    /*
+    * Class Name: JsonFile
+    * Purpose: Handle the parsing and deserialization of a JSON file into a list of InfixExpression objects.
+    * Methods: ParseJson()
+    * Coder: KG
+    * Date: April 8, 2025
+    */
     public class JsonFile
     {
-    /*
-     * Method name: ParseJson()
-     * Purpose: Read and deserialize the JSON file into a generic list of InfixExpression objects.
-     * Accepts: string (filePath)
-     * Returns: List<InfixExpression>
-     * Coder: KG
-     * Date: April 8, 2025
-     * Updated By: KL
-     * Changes: added aditional error checking and refined variables for clarity
-     */
+        /*
+         * Method name: ParseJson()
+         * Purpose: Read and deserialize the JSON file into a generic list of InfixExpression objects.
+         * Accepts: string (filePath)
+         * Returns: List<InfixExpression>
+         * Coder: KG
+         * Date: April 8, 2025
+         * Updated By: KL
+         * Changes: added aditional error checking and refined variables for clarity
+         */
         public static List<InfixExpression> ParseJson(string filePath)
         {
             if (!File.Exists(filePath))
-            {
                 throw new FileNotFoundException($"File not found: {filePath}");
-            }
+
             // Read the file and deserialize it into a List of InfixExpression objects
             string jsonContent = File.ReadAllText(filePath);
             var expressions = JsonConvert.DeserializeObject<List<InfixExpression>>(jsonContent);
 
             // Error Checking
             if (expressions == null)
-            {
                 throw new InvalidDataException("Failed to deserialize JSON content.");
-            }
 
             return expressions;
         }
