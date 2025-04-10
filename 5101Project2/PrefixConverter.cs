@@ -1,4 +1,10 @@
-﻿namespace _5101Project2
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _5101Project2
 {
     /*
      * Class Name: PrefixConverter

@@ -7,24 +7,23 @@ using System.Xml;
 
 namespace _5101Project2
 {
-
     /*
- * Class Name: Program
- * Purpose: Entry point for the application to evaluate a set of infix arithmetic expressions 
- *          by converting them into postfix and prefix notation and performing evaluations.
- * Methods:
- *      Main: Reads input, converts expressions, evaluates them, and displays results.
- *      PrintSummaryReport: Neatly displays the summary report of all evaluated expressions.
- *      PromptAndOpenXml: Prompts the user for an XML file path and opens it in the web browser.
- * Accepts: Input JSON file path containing infix expressions.
- * Returns: Console output displaying conversion results and evaluation, generates an XML file.
- * Coder: KG & KL
- * Date: April 8, 2025
- */
-
+     * Class Name: Program
+     * Purpose: Entry point for the application to evaluate a set of infix arithmetic expressions 
+     *          by converting them into postfix and prefix notation and performing evaluations.
+     * Methods:
+     *      Main: Reads input, converts expressions, evaluates them, and displays results.
+     *      PrintSummaryReport: Neatly displays the summary report of all evaluated expressions.
+     *      GenerateXMLFile: Generates an XML file from the evaluation results.
+     *      PromptAndOpenXml: Prompts the user for an XML file path and opens it in the web browser.
+     * Accepts: Input JSON file path containing infix expressions.
+     * Returns: Console output displaying conversion results and evaluation, generates an XML file.
+     * Coder: KG & KL
+     * Date: April 8, 2025
+     */
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             try
             {
@@ -53,11 +52,11 @@ namespace _5101Project2
 
                     // expression's details
                     Console.WriteLine($"\nExpression {expression.Sno}");
-                    Console.WriteLine($"Infix   : {infix}");
-                    Console.WriteLine($"Postfix : {postfixString}");
-                    Console.WriteLine($"Prefix  : {postfixString}");
-                    Console.WriteLine($"Postfix Result : {postfixResult}");
-                    Console.WriteLine($"Prefix Result  : {prefixResult}");
+                    Console.WriteLine($"Infix          : {infix}");
+                    Console.WriteLine($"Postfix        : {postfixString}");
+                    Console.WriteLine($"Prefix         : {prefixString}");
+                    Console.WriteLine($"Postfix Result : {Math.Round(postfixResult, 2)}");
+                    Console.WriteLine($"Prefix Result  : {Math.Round(prefixResult, 2)}");
                     Console.WriteLine($"Match          : {match}");
 
                     // Add results to the list
@@ -86,12 +85,19 @@ namespace _5101Project2
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
-        }
+        }// end main
 
+        /*
+         * Method name: PrintSummaryReport()
+         * Purpose: Display a formatted summary report of the evaluation results, showing infix, postfix, and prefix expressions, their respective evaluation results, and the match status.
+         * Accepts: List<EvaluationResult> (results) - A list of evaluation results to be displayed in the report.
+         * Returns: void - This method does not return any value.
+         * Coder: KG
+         * Date: April 8, 2025
+         */
         static void PrintSummaryReport(List<EvaluationResult> results)
         {
-            Console.WriteLine("\nThe Sample Output");
-            Console.WriteLine("The Summary Report\n");
+            Console.WriteLine("\nSummary Report");
 
             // Separator length updated for tighter alignment with headers and rows
             string separator = new string('=', 120);
@@ -107,13 +113,17 @@ namespace _5101Project2
                     $"|{res.Sno,-5}|{res.InFix,-25}|{res.PostFix,-25}|{res.PreFix,-25}|{res.PreFixRes,-12}|{res.PostFixRes,-12}|{(res.Match ? "True" : "False"),-8}|"
                 );
             }
-
             Console.WriteLine(separator);
         }
 
-
-
-
+        /*
+         * Method name: GenerateXMLFile()
+         * Purpose: Generates an XML file containing evaluation results from a list of EvaluationResult objects.
+         * Accepts: List<EvaluationResult> results - The list of evaluation results to be written to the XML file.
+         * Returns: void
+         * Coder: KL
+         * Date: April 9, 2025
+         */
         static void GenerateXMLFile(List<EvaluationResult> results)
         {
             try
@@ -165,7 +175,7 @@ namespace _5101Project2
                     // End the XML document
                     writer.WriteEndDocument();
 
-                    Console.WriteLine($"XML file generated successfully at: {xmlFilePath}");
+                    Console.WriteLine($"\nXML file generated successfully at: {xmlFilePath}");
                 }
             }
             catch (Exception ex)
@@ -174,9 +184,14 @@ namespace _5101Project2
             }
         }
 
-
-
-
+        /*
+         * Method name: PromptAndOpenXml()
+         * Purpose: Prompt the user for the full path of an XML file and attempt to open it in the default web browser. If the file does not exist, it notifies the user.
+         * Accepts: None - This method does not take any parameters.
+         * Returns: void - This method does not return any value.
+         * Coder: KG
+         * Date: April 8, 2025
+         */
         static void PromptAndOpenXml()
         {
             Console.Write("\nPlease enter the full path to the XML file you want to view in your browser: ");
@@ -193,9 +208,7 @@ namespace _5101Project2
                 Process.Start(psi);
             }
             else
-            {
                 Console.WriteLine("File not found. Please double-check the path.");
-            }
         }
-    }
-}
+    }//end class
+}// end namespace

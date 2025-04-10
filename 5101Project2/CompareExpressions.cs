@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace _5101Project2
 {
+    /*
+     * Class Name: CompareExpressions
+     * Purpose: This class implements the IComparer interface to compare the results of evaluating two expressions: one in prefix notation and one in postfix notation.
+     * The class compares the evaluation results of both expressions and determines which one produces a larger result, or if they are equal.
+     * Coder: KL
+     * Date: April 8, 2025
+     */
     public class CompareExpressions : IComparer<string[]>
     {
         /*

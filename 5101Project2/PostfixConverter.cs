@@ -64,7 +64,6 @@ namespace _5101Project2
             return result.ToArray();  // Return the list of tokens (postfix expression)
         }
 
-
         /*
          * Method name: Precedence()
          * Purpose: Determine the precedence of an operator.

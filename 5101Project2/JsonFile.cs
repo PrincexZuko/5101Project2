@@ -14,6 +14,8 @@ namespace _5101Project2
     * Methods: ParseJson()
     * Coder: KG
     * Date: April 8, 2025
+    * Updated By: KL
+    * Changes: added aditional error checking and refined variables for clarity to ParseJson() method
     */
     public class JsonFile
     {

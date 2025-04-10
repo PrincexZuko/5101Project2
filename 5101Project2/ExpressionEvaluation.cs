@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace _5101Project2
 {
+    /*
+     * Class Name: ExpressionEvaluation
+     * Purpose: This class provides methods for evaluating arithmetic expressions in both prefix and postfix notation.
+     * It constructs expression trees from tokenized expressions and performs evaluations using these trees.
+     * Methods:
+     *      evaluatePrefix: Evaluates a prefix expression and returns the result.
+     *      evaluatePostfix: Evaluates a postfix expression and returns the result.
+     *      BuildExpressionTree: Constructs an expression tree from a given prefix or postfix expression.
+     *      EvaluateExpressionTree: Evaluates the expression tree and computes the result.
+     * Coder: KL
+     * Date: April 8, 2025
+     */
     public class ExpressionEvaluation
     {
         /*
