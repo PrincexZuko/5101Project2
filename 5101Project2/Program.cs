@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Xml;
 
 namespace _5101Project2
 {
@@ -40,6 +41,8 @@ namespace _5101Project2
                     string[] postfixList = PostfixConverter.ConvertToPostfix(infix);
                     string[] prefixList = PrefixConverter.ConvertToPrefix(infix);
 
+                    string postfixString = string.Join("", postfixList);
+
                     // Evaluate prefix and postfix expressions
                     double postfixResult = ExpressionEvaluation.evaluatePostfix(postfixList);
                     double prefixResult = ExpressionEvaluation.evaluatePrefix(prefixList);
@@ -48,8 +51,8 @@ namespace _5101Project2
                     // expression's details
                     Console.WriteLine($"\nExpression {expression.Sno}");
                     Console.WriteLine($"Infix   : {infix}");
-                    Console.WriteLine($"Postfix : {postfix}");
-                    Console.WriteLine($"Prefix  : {prefix}");
+                    Console.WriteLine($"Postfix : {postfixString}");
+                    Console.WriteLine($"Prefix  : {postfixString}");
                     Console.WriteLine($"Postfix Result : {postfixResult}");
                     Console.WriteLine($"Prefix Result  : {prefixResult}");
                     Console.WriteLine($"Match          : {match}");
@@ -69,6 +72,11 @@ namespace _5101Project2
 
                 // Print summary report
                 PrintSummaryReport(results);
+
+                // After processing all expressions and collecting the results, generate the XML
+                GenerateXMLFile(results);
+
+                //Prompt to upload and view XML in browser
                 PromptAndOpenXml();
             }
             catch (Exception ex)
@@ -98,6 +106,69 @@ namespace _5101Project2
 
             Console.WriteLine(separator);
         }
+
+        static void GenerateXMLFile(List<EvaluationResult> results)
+        {
+            try
+            {
+                // Get the project directory
+                string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+                // Construct the full path for the Data folder and the XML file
+                string dataFolderPath = Path.Combine(projectDirectory, "Data");
+                string xmlFilePath = Path.Combine(dataFolderPath, "summary.xml");
+
+                // Create the XML file using the constructed path
+                using (XmlWriter writer = XmlWriter.Create(xmlFilePath, new XmlWriterSettings
+                {
+                    Indent = true,             // Enable indentation
+                    IndentChars = "  ",        // Use two spaces per indentation level
+                    NewLineChars = "\n",       // Newline for each element
+                    NewLineHandling = NewLineHandling.Replace
+                }))
+                {
+                    // Start the XML document
+                    writer.WriteStartDocument();
+
+                    // Start the root element
+                    writer.WriteStartElement("root");
+
+                    // Loop through each result and create corresponding XML elements
+                    foreach (var res in results)
+                    {
+                        // Start the 'expression' element
+                        writer.WriteStartElement("expression");
+
+                        // Write individual elements for each part of the result
+                        writer.WriteElementString("sno", res.Sno.ToString());
+                        writer.WriteElementString("infix", res.InFix);
+                        writer.WriteElementString("prefix", res.PreFix);
+                        writer.WriteElementString("postfix", res.PostFix);
+                        writer.WriteElementString("prefix_eval", res.PreFixRes.ToString());
+                        writer.WriteElementString("postfix_eval", res.PostFixRes.ToString());
+                        writer.WriteElementString("comparison", res.Match.ToString().ToLower());
+
+                        // End the 'expression' element
+                        writer.WriteEndElement();
+                    }
+
+                    // End the root element
+                    writer.WriteEndElement();
+
+                    // End the XML document
+                    writer.WriteEndDocument();
+
+                    Console.WriteLine($"XML file generated successfully at: {xmlFilePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while generating XML file: {ex.Message}");
+            }
+        }
+
+
+
 
         static void PromptAndOpenXml()
         {
