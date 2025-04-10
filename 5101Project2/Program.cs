@@ -44,7 +44,7 @@ namespace _5101Project2
                     // Combines the postfix tokens into a single string
                     string postfixString = string.Join("", postfixList);
                     // Combines the prefix tokens into a single string
-                    string prefixString = string.Join(" ", prefixList);
+                    string prefixString = string.Join("", prefixList);
 
                     // Evaluate prefix and postfix expressions
                     double postfixResult = ExpressionEvaluation.evaluatePostfix(postfixList);
