@@ -6,6 +6,21 @@ using System.IO;
 
 namespace _5101Project2
 {
+
+    /*
+ * Class Name: Program
+ * Purpose: Entry point for the application to evaluate a set of infix arithmetic expressions 
+ *          by converting them into postfix and prefix notation and performing evaluations.
+ * Methods:
+ *      Main: Reads input, converts expressions, evaluates them, and displays results.
+ *      PrintSummaryReport: Neatly displays the summary report of all evaluated expressions.
+ *      PromptAndOpenXml: Prompts the user for an XML file path and opens it in the web browser.
+ * Accepts: Input JSON file path containing infix expressions.
+ * Returns: Console output displaying conversion results and evaluation, generates an XML file.
+ * Coder: KG
+ * Date: April 8, 2025
+ */
+
     class Program
     {
         static void Main(string[] args)
