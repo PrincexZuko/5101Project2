@@ -18,7 +18,7 @@ namespace _5101Project2
  *      PromptAndOpenXml: Prompts the user for an XML file path and opens it in the web browser.
  * Accepts: Input JSON file path containing infix expressions.
  * Returns: Console output displaying conversion results and evaluation, generates an XML file.
- * Coder: KG
+ * Coder: KG & KL
  * Date: April 8, 2025
  */
 
@@ -41,7 +41,10 @@ namespace _5101Project2
                     string[] postfixList = PostfixConverter.ConvertToPostfix(infix);
                     string[] prefixList = PrefixConverter.ConvertToPrefix(infix);
 
+                    // Combines the postfix tokens into a single string
                     string postfixString = string.Join("", postfixList);
+                    // Combines the prefix tokens into a single string
+                    string prefixString = string.Join(" ", prefixList);
 
                     // Evaluate prefix and postfix expressions
                     double postfixResult = ExpressionEvaluation.evaluatePostfix(postfixList);
@@ -62,8 +65,8 @@ namespace _5101Project2
                     {
                         Sno = expression.Sno,
                         InFix = infix,
-                       // PostFix = postfix,
-                       // PreFix = prefix,
+                        PostFix = postfixString,
+                        PreFix = prefixString,
                         PostFixRes = Math.Round(postfixResult, 2),
                         PreFixRes = Math.Round(prefixResult, 2),
                         Match = match
@@ -90,8 +93,9 @@ namespace _5101Project2
             Console.WriteLine("\nThe Sample Output");
             Console.WriteLine("The Summary Report\n");
 
-            string separator = new string('=', 110);
-            string header = $"|{"Sno",-4}|{"InFix",-15}|{"PostFix",-15}|{"PreFix",-15}|{"Prefix Res",-10}|{"PostFix Res",-12}|{"Match",-6}|";
+            // Separator length updated for tighter alignment with headers and rows
+            string separator = new string('=', 120);
+            string header = $"|{"Sno",-5}|{"InFix",-25}|{"PostFix",-25}|{"PreFix",-25}|{"Prefix Res",-12}|{"PostFix Res",-12}|{"Match",-8}|";
 
             Console.WriteLine(separator);
             Console.WriteLine(header);
@@ -100,12 +104,15 @@ namespace _5101Project2
             foreach (var res in results)
             {
                 Console.WriteLine(
-                    $"|{res.Sno,-4}|{res.InFix,-15}|{res.PostFix,-15}|{res.PreFix,-15}|{res.PreFixRes,-10}|{res.PostFixRes,-12}|{(res.Match ? "True" : "False"),-6}|"
+                    $"|{res.Sno,-5}|{res.InFix,-25}|{res.PostFix,-25}|{res.PreFix,-25}|{res.PreFixRes,-12}|{res.PostFixRes,-12}|{(res.Match ? "True" : "False"),-8}|"
                 );
             }
 
             Console.WriteLine(separator);
         }
+
+
+
 
         static void GenerateXMLFile(List<EvaluationResult> results)
         {

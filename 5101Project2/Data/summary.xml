@@ -3,8 +3,8 @@
   <expression>
     <sno>1</sno>
     <infix>7-4</infix>
-    <prefix />
-    <postfix />
+    <prefix>- 7 4</prefix>
+    <postfix>74-</postfix>
     <prefix_eval>3</prefix_eval>
     <postfix_eval>3</postfix_eval>
     <comparison>true</comparison>
@@ -12,8 +12,8 @@
   <expression>
     <sno>2</sno>
     <infix>2+6</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ 2 6</prefix>
+    <postfix>26+</postfix>
     <prefix_eval>8</prefix_eval>
     <postfix_eval>8</postfix_eval>
     <comparison>true</comparison>
@@ -21,8 +21,8 @@
   <expression>
     <sno>3</sno>
     <infix>3*2</infix>
-    <prefix />
-    <postfix />
+    <prefix>* 3 2</prefix>
+    <postfix>32*</postfix>
     <prefix_eval>6</prefix_eval>
     <postfix_eval>6</postfix_eval>
     <comparison>true</comparison>
@@ -30,8 +30,8 @@
   <expression>
     <sno>4</sno>
     <infix>9/3</infix>
-    <prefix />
-    <postfix />
+    <prefix>/ 9 3</prefix>
+    <postfix>93/</postfix>
     <prefix_eval>3</prefix_eval>
     <postfix_eval>3</postfix_eval>
     <comparison>true</comparison>
@@ -39,8 +39,8 @@
   <expression>
     <sno>5</sno>
     <infix>7/2</infix>
-    <prefix />
-    <postfix />
+    <prefix>/ 7 2</prefix>
+    <postfix>72/</postfix>
     <prefix_eval>3.5</prefix_eval>
     <postfix_eval>3.5</postfix_eval>
     <comparison>true</comparison>
@@ -48,8 +48,8 @@
   <expression>
     <sno>6</sno>
     <infix>8+8-9</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ 8 - 8 9</prefix>
+    <postfix>88+9-</postfix>
     <prefix_eval>7</prefix_eval>
     <postfix_eval>7</postfix_eval>
     <comparison>true</comparison>
@@ -57,8 +57,8 @@
   <expression>
     <sno>7</sno>
     <infix>7-4*5</infix>
-    <prefix />
-    <postfix />
+    <prefix>- 7 * 4 5</prefix>
+    <postfix>745*-</postfix>
     <prefix_eval>-13</prefix_eval>
     <postfix_eval>-13</postfix_eval>
     <comparison>true</comparison>
@@ -66,8 +66,8 @@
   <expression>
     <sno>8</sno>
     <infix>9*2/6</infix>
-    <prefix />
-    <postfix />
+    <prefix>* 9 / 2 6</prefix>
+    <postfix>92*6/</postfix>
     <prefix_eval>3</prefix_eval>
     <postfix_eval>3</postfix_eval>
     <comparison>true</comparison>
@@ -75,8 +75,8 @@
   <expression>
     <sno>9</sno>
     <infix>8*8*2-7</infix>
-    <prefix />
-    <postfix />
+    <prefix>- * 8 * 8 2 7</prefix>
+    <postfix>88*2*7-</postfix>
     <prefix_eval>121</prefix_eval>
     <postfix_eval>121</postfix_eval>
     <comparison>true</comparison>
@@ -84,8 +84,8 @@
   <expression>
     <sno>10</sno>
     <infix>7*2+9/3</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ * 7 2 / 9 3</prefix>
+    <postfix>72*93/+</postfix>
     <prefix_eval>17</prefix_eval>
     <postfix_eval>17</postfix_eval>
     <comparison>true</comparison>
@@ -93,8 +93,8 @@
   <expression>
     <sno>11</sno>
     <infix>2*6*7/2+9</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ * 2 * 6 / 7 2 9</prefix>
+    <postfix>26*7*2/9+</postfix>
     <prefix_eval>51</prefix_eval>
     <postfix_eval>51</postfix_eval>
     <comparison>true</comparison>
@@ -102,8 +102,8 @@
   <expression>
     <sno>12</sno>
     <infix>6*1-3</infix>
-    <prefix />
-    <postfix />
+    <prefix>- * 6 1 3</prefix>
+    <postfix>61*3-</postfix>
     <prefix_eval>3</prefix_eval>
     <postfix_eval>3</postfix_eval>
     <comparison>true</comparison>
@@ -111,8 +111,8 @@
   <expression>
     <sno>13</sno>
     <infix>7/3*6/2*5*3</infix>
-    <prefix />
-    <postfix />
+    <prefix>/ 7 * 3 / 6 * 2 * 5 3</prefix>
+    <postfix>73/6*2/5*3*</postfix>
     <prefix_eval>11.67</prefix_eval>
     <postfix_eval>105</postfix_eval>
     <comparison>false</comparison>
@@ -120,8 +120,8 @@
   <expression>
     <sno>14</sno>
     <infix>9-2+8-3/2*6</infix>
-    <prefix />
-    <postfix />
+    <prefix>- 9 + 2 - 8 / 3 * 2 6</prefix>
+    <postfix>92-8+32/6*-</postfix>
     <prefix_eval>-0.75</prefix_eval>
     <postfix_eval>6</postfix_eval>
     <comparison>false</comparison>
@@ -129,8 +129,8 @@
   <expression>
     <sno>15</sno>
     <infix>9-3+7/2*8-6*7</infix>
-    <prefix />
-    <postfix />
+    <prefix>- 9 + 3 - / 7 * 2 8 * 6 7</prefix>
+    <postfix>93-72/8*+67*-</postfix>
     <prefix_eval>47.56</prefix_eval>
     <postfix_eval>-8</postfix_eval>
     <comparison>false</comparison>
@@ -138,8 +138,8 @@
   <expression>
     <sno>16</sno>
     <infix>(6-2)*9+5</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ * - 6 2 9 5</prefix>
+    <postfix>62-9*5+</postfix>
     <prefix_eval>41</prefix_eval>
     <postfix_eval>41</postfix_eval>
     <comparison>true</comparison>
@@ -147,8 +147,8 @@
   <expression>
     <sno>17</sno>
     <infix>5*6+(4*4)</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ * 5 6 * 4 4</prefix>
+    <postfix>56*44*+</postfix>
     <prefix_eval>46</prefix_eval>
     <postfix_eval>46</postfix_eval>
     <comparison>true</comparison>
@@ -156,8 +156,8 @@
   <expression>
     <sno>18</sno>
     <infix>(6+7+8)*5-(2*2)</infix>
-    <prefix />
-    <postfix />
+    <prefix>- * + 6 + 7 8 5 * 2 2</prefix>
+    <postfix>67+8+5*22*-</postfix>
     <prefix_eval>101</prefix_eval>
     <postfix_eval>101</postfix_eval>
     <comparison>true</comparison>
@@ -165,8 +165,8 @@
   <expression>
     <sno>19</sno>
     <infix>(3*6+4)-4+1*3+(8/2)</infix>
-    <prefix />
-    <postfix />
+    <prefix>- + * 3 6 4 + 4 + * 1 3 / 8 2</prefix>
+    <postfix>36*4+4-13*+82/+</postfix>
     <prefix_eval>11</prefix_eval>
     <postfix_eval>25</postfix_eval>
     <comparison>false</comparison>
@@ -174,8 +174,8 @@
   <expression>
     <sno>20</sno>
     <infix>8*9-6/2+9*(2-4)</infix>
-    <prefix />
-    <postfix />
+    <prefix>- * 8 9 + / 6 2 * 9 - 2 4</prefix>
+    <postfix>89*62/-924-*+</postfix>
     <prefix_eval>87</prefix_eval>
     <postfix_eval>51</postfix_eval>
     <comparison>false</comparison>
@@ -183,8 +183,8 @@
   <expression>
     <sno>21</sno>
     <infix>(9*7)+(6*4)</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ * 9 7 * 6 4</prefix>
+    <postfix>97*64*+</postfix>
     <prefix_eval>87</prefix_eval>
     <postfix_eval>87</postfix_eval>
     <comparison>true</comparison>
@@ -192,8 +192,8 @@
   <expression>
     <sno>22</sno>
     <infix>8*2-6+8-2+(6-3)</infix>
-    <prefix />
-    <postfix />
+    <prefix>- * 8 2 + 6 - 8 + 2 - 6 3</prefix>
+    <postfix>82*6-8+2-63-+</postfix>
     <prefix_eval>7</prefix_eval>
     <postfix_eval>19</postfix_eval>
     <comparison>false</comparison>
@@ -201,8 +201,8 @@
   <expression>
     <sno>23</sno>
     <infix>9-6+8*3+8-7</infix>
-    <prefix />
-    <postfix />
+    <prefix>- 9 + 6 + * 8 3 - 8 7</prefix>
+    <postfix>96-83*+8+7-</postfix>
     <prefix_eval>-22</prefix_eval>
     <postfix_eval>28</postfix_eval>
     <comparison>false</comparison>
@@ -210,8 +210,8 @@
   <expression>
     <sno>24</sno>
     <infix>8*7-6*7+3*2/1</infix>
-    <prefix />
-    <postfix />
+    <prefix>- * 8 7 + * 6 7 * 3 / 2 1</prefix>
+    <postfix>87*67*-32*1/+</postfix>
     <prefix_eval>8</prefix_eval>
     <postfix_eval>20</postfix_eval>
     <comparison>false</comparison>
@@ -219,8 +219,8 @@
   <expression>
     <sno>25</sno>
     <infix>8*8/4+6/6*6</infix>
-    <prefix />
-    <postfix />
+    <prefix>+ * 8 / 8 4 / 6 * 6 6</prefix>
+    <postfix>88*4/66/6*+</postfix>
     <prefix_eval>16.17</prefix_eval>
     <postfix_eval>22</postfix_eval>
     <comparison>false</comparison>
