@@ -37,16 +37,12 @@ namespace _5101Project2
                     string infix = expression.Infix;
 
                     // Convert infix to postfix and prefix
-                    string postfix = PostfixConverter.ConvertToPostfix(infix);
-                    string prefix = PrefixConverter.ConvertToPrefix(infix);
-
-                    // Tokenize the expressions
-                    string[] postfixTokens = postfix.Split(' ');
-                    string[] prefixTokens = prefix.Split(' ');
+                    string[] postfixList = PostfixConverter.ConvertToPostfix(infix);
+                    string[] prefixList = PrefixConverter.ConvertToPrefix(infix);
 
                     // Evaluate prefix and postfix expressions
-                    double postfixResult = ExpressionEvaluation.evaluatePostfix(postfixTokens);
-                    double prefixResult = ExpressionEvaluation.evaluatePrefix(prefixTokens);
+                    double postfixResult = ExpressionEvaluation.evaluatePostfix(postfixList);
+                    double prefixResult = ExpressionEvaluation.evaluatePrefix(prefixList);
                     bool match = Math.Round(postfixResult, 2) == Math.Round(prefixResult, 2);
 
                     // expression's details
@@ -63,8 +59,8 @@ namespace _5101Project2
                     {
                         Sno = expression.Sno,
                         InFix = infix,
-                        PostFix = postfix,
-                        PreFix = prefix,
+                       // PostFix = postfix,
+                       // PreFix = prefix,
                         PostFixRes = Math.Round(postfixResult, 2),
                         PreFixRes = Math.Round(prefixResult, 2),
                         Match = match

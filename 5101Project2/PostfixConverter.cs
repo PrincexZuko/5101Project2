@@ -23,46 +23,47 @@ namespace _5101Project2
          * Method name: ConvertToPostfix()
          * Purpose: Convert an infix expression to its equivalent postfix notation.
          * Accepts: string (infix) - The infix expression to be converted.
-         * Returns: string - The corresponding postfix expression.
+         * Returns: string[] - The corresponding postfix expression.
          * Coder: KG
          * Date: April 8, 2025
          * Updated By: KL
-         * Changes: Updated for performance using StringBuilder and append instead of string concatenation.
+         * Changes: Return string array instead of a string
          */
-        public static string ConvertToPostfix(string infix)
+        public static string[] ConvertToPostfix(string infix)
         {
             Stack<char> st = new Stack<char>();
-            StringBuilder result = new StringBuilder(); 
+            List<string> result = new List<string>();
 
             foreach (char token in infix)
             {
                 if (char.IsLetterOrDigit(token))
-                    result.Append(token);
+                    result.Add(token.ToString());  // Add individual operands (numbers/letters)
                 else if (token == '(')
-                    st.Push(token);
+                    st.Push(token);  // Push '(' to the stack
                 else if (token == ')')
                 {
                     while (st.Count > 0 && st.Peek() != '(')
-                        result.Append(st.Pop());
+                        result.Add(st.Pop().ToString());  // Pop operators until '(' is found
 
-                    if(st.Count > 0)
-                        st.Pop(); // Remove '('
+                    if (st.Count > 0 && st.Peek() == '(')
+                        st.Pop();  // Discard '('
                 }
                 else // If an operator is scanned
                 {
                     while (st.Count > 0 && Precedence(token) <= Precedence(st.Peek()))
-                        result.Append(st.Pop());
+                        result.Add(st.Pop().ToString());  // Pop operators of higher or equal precedence
 
-                    st.Push(token); 
+                    st.Push(token);  // Push the current operator onto the stack
                 }
             }
 
+            // Pop any remaining operators from the stack
             while (st.Count > 0)
-                result.Append(st.Pop());
+                result.Add(st.Pop().ToString());
 
-            //convert StringBuilder object to string and return
-            return result.ToString();
+            return result.ToArray();  // Return the list of tokens (postfix expression)
         }
+
 
         /*
          * Method name: Precedence()
